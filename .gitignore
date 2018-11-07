@@ -8,3 +8,5 @@ logs/000/
 *.h5
 
 *.weights
+
+\.idea/
