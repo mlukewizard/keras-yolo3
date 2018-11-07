@@ -1,0 +1,10 @@
+
+yolo3/__pycache__/
+VOCdevkit/
+
+
+logs/000/
+
+*.h5
+
+*.weights
