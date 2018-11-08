@@ -20,13 +20,15 @@ from PIL import Image
 
 IMAGE = True
 INPUT = os.path.join("images", "test_image.jpg")
-OUTPUT = ""
+# INPUT = r"C:\Users\MARL\Documents\myDocuments\personal\keras-yolo/VOCdevkit/VOC2007/JPEGImages/003466.jpg"
+OUTPUT = "images/"
 
 class YOLO(object):
     _defaults = {
-        "model_path": os.path.join('model_data', 'tiny_yolo_model.h5'),
+        # "model_path": os.path.join('model_data', 'yolo_model.h5'),
+        "model_path": r"C:\Users\MARL\Documents\myDocuments\personal\keras-yolo\logs\000\trained_weights_stage_0.h5",
         "anchors_path": os.path.join('model_data', 'tiny_yolo_anchors.txt'),
-        "classes_path": os.path.join('model_data', 'fake_coco_classes.txt'),
+        "classes_path": os.path.join('model_data', 'voc_classes.txt'),
         "score" : 0.3,
         "iou" : 0.45,
         "model_image_size" : (416, 416),
