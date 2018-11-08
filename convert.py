@@ -4,7 +4,6 @@ Reads Darknet config and weights and creates Keras model with TF backend.
 
 """
 
-import argparse
 import configparser
 import io
 import os
@@ -20,28 +19,11 @@ from keras.models import Model
 from keras.regularizers import l2
 from keras.utils.vis_utils import plot_model as plot
 
-CONFIG_PATH = os.path.join("model_data", "yolov3-tiny.cfg")
-WEIGHTS_PATH = os.path.join("model_data", "yolov3-tiny.weights")
-OUTPUT_PATH = os.path.join("model_data", "tiny_yolo_weights.h5")
+CONFIG_PATH = os.path.join("model_data", "yolov3.cfg")
+WEIGHTS_PATH = os.path.join("model_data", "yolov3.weights")
+OUTPUT_PATH = os.path.join("model_data", "yolo_weights.h5")
 PLOT_MODEL = False
 WEIGHTS_ONLY = True
-
-
-
-# parser = argparse.ArgumentParser(description='Darknet To Keras Converter.')
-# parser.add_argument('config_path', help='Path to Darknet cfg file.')
-# parser.add_argument('weights_path', help='Path to Darknet weights file.')
-# parser.add_argument('output_path', help='Path to output Keras model file.')
-# parser.add_argument(
-#     '-p',
-#     '--plot_model',
-#     help='Plot generated Keras model and save as image.',
-#     action='store_true')
-# parser.add_argument(
-#     '-w',
-#     '--weights_only',
-#     help='Save as Keras weights file instead of model file.',
-#     action='store_true')
 
 def unique_config_sections(config_file):
     """Convert all config sections to have unique names.
@@ -267,4 +249,3 @@ def _main():
 
 if __name__ == '__main__':
     _main()
-    # _main(parser.parse_args())

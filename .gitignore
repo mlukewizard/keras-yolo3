@@ -10,3 +10,4 @@ logs/000/
 *.weights
 
 \.idea/
+venv/

@@ -18,11 +18,15 @@ import os
 from keras.utils import multi_gpu_model
 from PIL import Image
 
+IMAGE = True
+INPUT = os.path.join("images", "test_image.jpg")
+OUTPUT = ""
+
 class YOLO(object):
     _defaults = {
-        "model_path": 'model_data/yolo.h5',
-        "anchors_path": 'model_data/yolo_anchors.txt',
-        "classes_path": 'model_data/fake_coco_classes.txt',
+        "model_path": os.path.join('model_data', 'tiny_yolo_model.h5'),
+        "anchors_path": os.path.join('model_data', 'tiny_yolo_anchors.txt'),
+        "classes_path": os.path.join('model_data', 'fake_coco_classes.txt'),
         "score" : 0.3,
         "iou" : 0.45,
         "model_image_size" : (416, 416),
@@ -222,10 +226,6 @@ def detect_img(yolo, img):
     yolo.close_session()
 
 if __name__ == '__main__':
-    IMAGE = True
-    INPUT = os.path.join("images", "test_image.jpg")
-    OUTPUT = ""
-
     if IMAGE:
         print("Image detection mode")
         detect_img(YOLO(), INPUT)
