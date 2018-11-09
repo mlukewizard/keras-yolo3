@@ -18,17 +18,17 @@ import os
 from keras.utils import multi_gpu_model
 from PIL import Image
 
-IMAGE = True
-INPUT = os.path.join("images", "test_image.jpg")
-# INPUT = r"C:\Users\MARL\Documents\myDocuments\personal\keras-yolo/VOCdevkit/VOC2007/JPEGImages/003466.jpg"
+IMAGE = False
+INPUT = r"C:\Users\MARL\Documents\myDocuments\personal\keras-yolo/VOCdevkit/VOC2007/JPEGImages/003466.jpg"
+INPUT = 0
 OUTPUT = "images/"
 
 class YOLO(object):
     _defaults = {
-        # "model_path": os.path.join('model_data', 'yolo_model.h5'),
-        "model_path": r"C:\Users\MARL\Documents\myDocuments\personal\keras-yolo\logs\000\trained_weights_stage_0.h5",
+        "model_path": os.path.join('model_data', 'tiny_yolo_model.h5'),
+        # "model_path": r"C:\Users\MARL\Documents\myDocuments\personal\keras-yolo\logs\000\trained_weights_stage_0.h5",
         "anchors_path": os.path.join('model_data', 'tiny_yolo_anchors.txt'),
-        "classes_path": os.path.join('model_data', 'voc_classes.txt'),
+        "classes_path": os.path.join('model_data', 'coco_classes.txt'),
         "score" : 0.3,
         "iou" : 0.45,
         "model_image_size" : (416, 416),
@@ -177,6 +177,7 @@ class YOLO(object):
 
 def detect_video(yolo, video_path, output_path=""):
     import cv2
+
     vid = cv2.VideoCapture(video_path)
     if not vid.isOpened():
         raise IOError("Couldn't open webcam or video")
@@ -232,4 +233,5 @@ if __name__ == '__main__':
         print("Image detection mode")
         detect_img(YOLO(), INPUT)
     else:
+        print("Video detection mode")
         detect_video(YOLO(), INPUT, OUTPUT)
